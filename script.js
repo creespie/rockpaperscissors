@@ -1,4 +1,12 @@
-
+function round(){
+    if(humanChoice == computerChoice){
+        return draw();
+    }else if((humanChoice == "paper" && computerChoice == "rock") || (humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "scissors" && computerChoice == "papaer")){
+        return win();
+    }else{
+    return loss();
+    }
+}
 //get the computer choice with random generation of numbers
 function getComputerChoice(){
     let x = Math.floor(Math.random() * 3);
@@ -55,7 +63,7 @@ function draw(){
 
 //function to play the round
 function round(){
-    if(humanChoice == computerChoice){
+    if(humanChoice === computerChoice){
         return draw();
     }else if((humanChoice == "paper" && computerChoice == "rock") || (humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "scissors" && computerChoice == "papaer")){
         return win();
@@ -63,4 +71,4 @@ function round(){
     return loss();
     }
 }
-console.log(draw());
+console.log(round());
