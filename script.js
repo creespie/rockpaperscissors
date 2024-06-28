@@ -1,29 +1,39 @@
+//get all the variables for divs and buttons
+const buttons = document.querySelectorAll("button");
+const score = document.querySelector(".score");
+const outcome = document.querySelector("#outcome");
 
+//execute playround on button click
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      playRound(button.id);
+    });
+  });
 
 //create the starting scores
 let computerScore = 0;
 let humanScore = 0;
 
 //function to play the round
-function playRound(){
-    let humanChoice = getHumanImput();
+function playRound(humanChoice){
+    //let humanChoice = getHumanImput();
     let computerChoice = getComputerChoice();
     
     //functions for human loss, win or draw
     function win(){
         humanScore = humanScore + 1;
-        console.log("You won!"+ humanChoice + " beats " + computerChoice);
-        console.log("your score is " + humanScore);
+        outcome.textContent = "You won! "+ humanChoice + " beats " + computerChoice;
+        score.textContent = "The score is " + humanScore + " for you and " + computerScore + " for the computer!";
     }
     
     function loss(){
         computerScore = computerScore + 1;
-        console.log("You lost!"+ computerChoice + " beats " + humanChoice);
-        console.log("computer score is "+ computerScore);
+        outcome.textContent = "You lost! "+ computerChoice + " beats " + humanChoice;
+        score.textContent = "The score is " + humanScore + " for you and " + computerScore + " for the computer!";
     }
     
     function draw(){
-        console.log("It's a draw!")
+        outcome.textContent ="It's a draw!";
     }
 
 
@@ -76,4 +86,4 @@ function playGame(){
         playRound();
 }
 }
-console.log(playGame())
+
