@@ -18,6 +18,13 @@ let humanScore = 0;
 function playRound(humanChoice){
     //let humanChoice = getHumanImput();
     let computerChoice = getComputerChoice();
+
+    //update human image
+    document.getElementById("humanimage").src = "images/" + humanChoice + ".png";
+
+    //update computer image
+    document.getElementById("hcomputer").src = "images/" + computerChoice + ".png";
+
     
     //functions for human loss, win or draw
     function win(){
