@@ -1,0 +1,23 @@
+.main{
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: aqua;
+    flex-grow: 1;
+}
+
+body{
+    flex-grow: 1;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.images{
+    width: 400px;
+    height: 400px;
+    
+}
