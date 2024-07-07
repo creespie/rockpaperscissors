@@ -16,7 +16,7 @@ let humanScore = 0;
 
 //function to play the round
 function playRound(humanChoice){
-    //let humanChoice = getHumanImput();
+    
     let computerChoice = getComputerChoice();
 
     //update human image
@@ -30,17 +30,32 @@ function playRound(humanChoice){
     function win(){
         humanScore = humanScore + 1;
         outcome.textContent = "You won! "+ humanChoice + " beats " + computerChoice;
-        score.textContent = "The score is " + humanScore + " for you and " + computerScore + " for the computer!";
+        //stop game on 5
+        if(humanScore == 5){
+            score.textContent = "You won the match! You got to 5 first!";
+            computerScore = 0;
+            humanScore = 0;
+        }else{
+            score.textContent = "The score is " + humanScore + " for you and " + computerScore + " for the computer!";
+        }
     }
     
     function loss(){
         computerScore = computerScore + 1;
         outcome.textContent = "You lost! "+ computerChoice + " beats " + humanChoice;
-        score.textContent = "The score is " + humanScore + " for you and " + computerScore + " for the computer!";
+        //stop game on 5
+        if(computerScore == 5){
+            score.textContent = "You lost the match! The computer got to 5 first!";
+            computerScore = 0;
+            humanScore = 0;
+        }else{
+            score.textContent = "The score is " + humanScore + " for you and " + computerScore + " for the computer!";
+        }
     }
     
     function draw(){
         outcome.textContent ="It's a draw!";
+        score.textContent = "The score is " + humanScore + " for you and " + computerScore + " for the computer!";
     }
 
 
@@ -58,39 +73,15 @@ function playRound(humanChoice){
     return choice;
     }
 
-    //get the human imput via the prompt command
-    function getHumanImput(){
-    let choice = prompt("rock, paper or scissors?");
-    let fixedchoice = choice.toLowerCase();
-    let human;
-    let error;
-    if(fixedchoice == "rock"){
-        human = "rock";
-    }else if(fixedchoice == "paper"){
-        human = "paper";
-    }else if(fixedchoice == "scissors" || fixedchoice == "scissor"){
-        human = "scissors";
-    }else{
-        error = "you inserted an invalid value!";
-        return error;
-    };
-    return human;
-    }
-
+    
     //check who won
     if(humanChoice === computerChoice){
         return draw();
-    }else if((humanChoice == "paper" && computerChoice == "rock") || (humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "scissors" && computerChoice == "papaer")){
+    }else if((humanChoice == "paper" && computerChoice == "rock") || (humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "scissors" && computerChoice == "paper")){
         return win();
     }else{
     return loss();
     }
 }
 
-//play the game
-function playGame(){
-    for (let i = 1; i <= 5; i++){
-        playRound();
-}
-}
 
